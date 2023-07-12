@@ -8,6 +8,7 @@ const createSocketWithServer = (serverInstance) => {
     cors: {
       origin: 'https://notion-guest-book.netlify.app',
       methods: ['GET', 'POST'],
+      credentials: true,
     },
   });
 
