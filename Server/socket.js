@@ -7,6 +7,7 @@ const createSocketWithServer = (serverInstance) => {
   socketInstance = new Server(serverInstance, {
     cors: {
       origin: '*',
+      methods: ['GET', 'POST'],
     },
   });
 
