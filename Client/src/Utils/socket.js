@@ -13,6 +13,6 @@ const EVENT_TYPE = {
 };
 
 /** @type {Socket} */
-const socket = io(import.meta.env.VITE_WEBSOCKET_URL);
+const socket = io(import.meta.env.VITE_WEBSOCKET_URL, { withCredentials: true });
 
 export { EVENT_TYPE, socket };

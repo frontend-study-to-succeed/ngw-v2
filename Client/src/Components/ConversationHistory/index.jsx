@@ -31,6 +31,7 @@ const ConversationHistory = ({ conversations }) => {
 
   useEffect(() => {
     window.addEventListener('wheel', handleWheel);
+    window.addEventListener('touchmove', handleWheel);
 
     return () => window.removeEventListener('wheel', handleWheel);
   }, []);
@@ -112,6 +113,10 @@ const ConversationHistory = ({ conversations }) => {
   }, [lastCommands]);
 
   const handleWheel = (event) => {
+    if (!containerRef.current) {
+      return;
+    }
+
     let scrollPos = containerRef.current.scrollTop;
 
     if (scrollPos === 0 && !fetchLoading.current) {
