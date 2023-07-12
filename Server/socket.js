@@ -6,7 +6,7 @@ let socketInstance = null;
 const createSocketWithServer = (serverInstance) => {
   socketInstance = new Server(serverInstance, {
     cors: {
-      origin: '*',
+      origin: 'https://notion-guest-book.netlify.app',
       methods: ['GET', 'POST'],
     },
   });
