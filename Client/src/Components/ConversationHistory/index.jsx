@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 
 import { StyledConversationHistory } from './styled.jsx';
 
+import { elementScrollIntoView } from 'seamless-scroll-polyfill';
+
 import ChatMessage from '@/Components/ChatMessage/';
 
 import { nextPage } from '@Store/ConversationSlice.js';
@@ -72,10 +74,11 @@ const ConversationHistory = ({ conversations }) => {
     }
 
     // 히스토리 불러온 케이스
-    const savTop = parent.document.documentElement.scrollTop;
-    // document.getElementById('elementID').scrollIntoView();
-    document.querySelector(`[data-message-id='${lastMessageId.current}']`).scrollIntoView();
-    parent.document.documentElement.scrollTop = savTop;
+    elementScrollIntoView(document.querySelector(`[data-message-id='${lastMessageId.current}']`));
+    // const savTop = parent.document.documentElement.scrollTop;
+    // // document.getElementById('elementID').scrollIntoView();
+    // document.querySelector(`[data-message-id='${lastMessageId.current}']`).scrollIntoView();
+    // parent.document.documentElement.scrollTop = savTop;
 
     lastMessageId.current = conversations[0]._id;
     prevConversations.current = conversations;
